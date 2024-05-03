@@ -1,0 +1,50 @@
+
+<div class="container">
+  <div class="mb-4 mt-4">
+    <h1>Generate Minesweeper Board</h1>
+    <% if @board.errors.any? %>
+      <div class="alert alert-danger">
+        <h4>Following errors occurred:</h4>
+        <ul>
+          <% @board.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <%= form_with model: @board do |f| %>
+    <div class="mb-3">
+      <%= f.label :email, "Email", class: "form-label" %>
+      <%= f.text_field :email, class: "form-control", required: true, placeholder: "Enter your email" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :name, "Name of the Board", class: "form-label" %>
+      <%= f.text_field :name, class: "form-control", required: true, placeholder: "Enter name of the board" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :width, "Width of the Board", class: "form-label" %>
+      <%= f.number_field :width, class: "form-control", required: true, placeholder: "Enter width of the board" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :height, "Height of the Board", class: "form-label" %>
+      <%= f.number_field :height, class: "form-control", required: true, placeholder: "Enter height of the board" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :mines, "Number of Mines", class: "form-label" %>
+      <%= f.number_field :total_mines, class: "form-control", required: true, placeholder: "Enter number of mines" %>
+    </div>
+
+    <%= f.submit "Generate Board", class: "btn btn-primary" %>
+  <% end %>
+  <br>
+  <div class="mb-4 mt-4">
+    <h3>Recent Boards: <span><%= link_to "View all Boards", boards_path, class: "btn btn-primary pull-right" %></span></h3>
+  </div>
+  <%= render 'boards_table', boards: @recent_boards %>
+</div>

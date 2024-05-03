@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="mb-4 mt-4">
+    <h1><%= @board.name %></h1>
+    <p>Created by: <%= @board.email %></p>
+  </div>
+
+  <div class="board-wrapper">
+    <div class="board-container">
+      <% @tiles.each do |row| %>
+        <div class="row-container">
+          <% row.each do |cell| %>
+            <div class="cell">
+              <%= cell ? "💣" : "⬜️" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <%= link_to "Generate New Board", root_path, class: "btn btn-primary" %>
+  </div>
+
+</div>

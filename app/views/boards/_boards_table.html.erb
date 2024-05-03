@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+  <% boards.each do |board| %>
+    <tr>
+      <td><%= link_to board.name, board %></td>
+      <td><%= board.email %></td>
+      <td><%= board.created_at.strftime("%A, %B %d, %Y at %H:%M:%S") %></td>
+    </tr>
+  <% end %>
+</table>
